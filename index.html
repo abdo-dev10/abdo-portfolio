@@ -3,89 +3,210 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Abdo | Open Source Community</title>
+<title>Abdo Portfolio</title>
+<!-- FontAwesome 6 for global premium icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Devicon for exact official tech logos (VS Code, React, Node...) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --black:#000000;
-  --purple-dark:#3a0072;
-  --purple:#8b4dff;
-  --green:#00ff88;
-  --text:#efeaf8;
-  --muted:#cfc3ea;
-  --glass: rgba(255,255,255,0.04);
-  --card: rgba(255,255,255,0.03);
-  --transition: all 0.35s ease;
+:root {
+  --bg-dark: #030712;
+  --bg-deep: #0b1329;
+  --primary-blue: #2563eb;
+  --neon-cyan: #00f2ff;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-card: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(59, 130, 246, 0.15);
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
-  background-color: var(--black);
-  color: var(--text);
-  line-height:1.6;
+
+/* Reset & Layout Harmonization */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+html { scroll-behavior: smooth; background-color: var(--bg-dark); }
+body {
+  background: radial-gradient(circle at 50% 0%, var(--bg-deep) 0%, var(--bg-dark) 80%);
+  color: var(--text-main);
+  line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
-.container{width:90%;max-width:1200px;margin:0 auto;padding:0 15px}
-a{color:var(--purple);text-decoration:none;transition:var(--transition)}
-a:hover{color:var(--green)}
-header{position:fixed;top:0;left:0;right:0;background: rgba(0,0,0,0.85);backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:1000}
-.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
-.logo{display:flex;align-items:center;gap:12px;color:var(--text);font-weight:700;font-size:1.05rem}
-.logo .title{display:flex;flex-direction:column;line-height:1}
-.logo .title .main{font-size:1rem;color:var(--text)}
-.nav-links{display:flex;gap:22px;align-items:center}
-.nav-links a{color:var(--text);font-weight:500}
-.nav-links a:hover{color:var(--green)}
-.hamburger{display:none;cursor:pointer;font-size:1.25rem;color:var(--text)}
-.header-right{display:flex;align-items:center;gap:14px}
-.hero{padding:140px 0 80px;text-align:center;position:relative;overflow:hidden}
-.hero-inner{position:relative;z-index:2}
-.floating-elements{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;overflow:visible}
-.floating-element{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(155,77,255,0.14), rgba(155,77,255,0.06) 40%);box-shadow:0 8px 20px rgba(58,0,114,0.12);animation:float-element linear infinite;will-change:transform,opacity}
-@keyframes float-element{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(-1200px) rotate(720deg);opacity:0}}
-.profile-container{position:relative;display:inline-block;margin-bottom:18px;z-index:2}
-.profile-halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;background:radial-gradient(circle, rgba(155,77,255,0.08) 0%, rgba(0,0,0,0) 60%);z-index:1;animation:halo-pulse 3s ease-in-out infinite}
-@keyframes halo-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.8}50%{transform:translate(-50%,-50%) scale(1.06);opacity:0.45}}
-.profile-img{width:280px;height:280px;border-radius:50%;object-fit:cover;object-position:top;border:6px solid rgba(155,77,255,0.22);z-index:2;box-shadow:0 25px 60px rgba(58,0,114,0.35);animation:profile-float 5s ease-in-out infinite}
-@keyframes profile-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.hero h1{margin-top:14px;font-size:2.4rem;color:var(--text);text-shadow:0 6px 24px rgba(58,0,114,0.18)}
-.hero p{color:var(--muted);max-width:820px;margin:14px auto 18px;font-size:1.02rem}
-.btn{display:inline-block;padding:12px 28px;border-radius:999px;background:var(--purple-dark);color:white;font-weight:600;box-shadow:0 12px 40px rgba(111,45,189,0.12);transition:var(--transition)}
-.btn:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(111,45,189,0.2);background:var(--purple)}
-section{padding:80px 0;position:relative;z-index:1;opacity:0;transform:translateY(18px);transition:all .7s ease-out;overflow:visible}
-section.visible{opacity:1;transform:translateY(0)}
-h2{color:var(--purple);font-size:1.9rem;margin-bottom:18px}
-p{color:var(--muted)}
-.about-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.skill-category{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45);transition:var(--transition)}
-.skill-category h3{color:var(--purple)}
-.skills-list{display:flex;flex-wrap:wrap;gap:8px}
-.skill-item{display:flex;align-items:center;background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;color:white;font-weight:500;gap:8px}
-.education-item{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45);margin-bottom:18px}
-.contact-container{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.contact-item{display:flex;gap:14px;align-items:center;background:var(--glass);padding:14px;border-radius:10px}
-.contact-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--purple-dark);color:white;font-size:20px}
-.contact-form{background:var(--card);padding:20px;border-radius:12px}
-input.form-control,textarea.form-control{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
-input.form-control:focus,textarea.form-control:focus{outline:none;box-shadow:0 6px 30px rgba(111,45,189,0.08)}
-footer{padding:26px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);margin-top:30px}
-@media(max-width:992px){.about-content,.contact-container{grid-template-columns:1fr}header{padding:12px 20px}.nav-links{display:none}.hamburger{display:block}}
-@media(max-width:600px){.profile-img{width:220px;height:220px;object-position:top}.profile-halo{width:260px;height:260px}.hero{padding-top:120px}}
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 0 15px; }
+a { text-decoration: none; transition: var(--transition); }
+
+/* Premium Navbar */
+header {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(3, 7, 18, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+}
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px; background: linear-gradient(135deg, #fff 40%, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-wrapper { display: flex; align-items: center; gap: 24px; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { color: var(--text-muted); font-weight: 500; font-size: 0.9rem; position: relative; padding: 4px 0; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+  background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); transition: var(--transition);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.hamburger { display: none; cursor: pointer; font-size: 1.25rem; color: var(--text-main); }
+
+/* Clean & Separated Hero Section */
+.hero { padding: 160px 0 80px; text-align: center; position: relative; }
+.hero-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; position: relative; }
+
+/* Perfect Sized Profile Container */
+.profile-container { position: relative; width: 180px; height: 180px; margin-bottom: 24px; display: block; }
+.profile-halo {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+  box-shadow: 0 0 30px 4px var(--primary-blue), inset 0 0 15px var(--neon-cyan);
+  z-index: 1; animation: halo-pulse 3.5s ease-in-out infinite;
+}
+@keyframes halo-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; filter: blur(1px); }
+  50% { transform: scale(1.05); opacity: 0.5; filter: blur(3px); }
+}
+.profile-img {
+  width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center;
+  border: 3px solid rgba(255, 255, 255, 0.1); position: relative; z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: var(--transition);
+}
+.profile-container:hover .profile-img { transform: scale(1.02); border-color: var(--neon-cyan); }
+
+/* Hero Typography */
+.hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; background: linear-gradient(to right, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { color: var(--text-muted); max-width: 680px; margin: 0 auto 28px; font-size: 1.05rem; font-weight: 400; line-height: 1.7; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 30px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary-blue), #1d4ed8); color: #fff;
+  font-weight: 600; font-size: 0.9rem; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+  transition: var(--transition); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5), 0 0 15px var(--neon-cyan); }
+
+/* Structured Sections */
+section { padding: 80px 0 40px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+section.visible { opacity: 1; transform: translateY(0); }
+.section-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 32px; position: relative; display: inline-block; }
+.section-title::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 35px; height: 3px; background: var(--neon-cyan); border-radius: 2px; box-shadow: 0 0 8px var(--neon-cyan); }
+
+/* Structured Glassmorphism Cards */
+.glass-card {
+  background: var(--glass-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05); padding: 28px; border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25); transition: var(--transition);
+}
+.glass-card:hover { border-color: var(--glass-border); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1); }
+
+/* About Grid Alignment */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.about-text p { color: var(--text-muted); font-size: 1rem; margin-bottom: 16px; line-height: 1.7; }
+.about-text p:last-child { margin-bottom: 0; }
+
+/* Skills Grid (Compact & Well-proportioned) */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.skills-category { padding: 22px; border-radius: 14px; background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255, 255, 255, 0.04); }
+.skills-category h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; color: #fff; display: flex; align-items: center; gap: 8px; }
+.skills-category h3 i { color: var(--primary-blue); font-size: 1.1rem; }
+
+.skills-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 10px; }
+.skill-item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 12px 6px; border-radius: 10px; text-align: center; transition: var(--transition);
+}
+.skill-item i { font-size: 1.7rem; transition: var(--transition); }
+.skill-item span { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); }
+
+.skill-item:hover { background: rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.3); transform: translateY(-3px); }
+.skill-item:hover span { color: #fff; }
+.skill-item:hover i { transform: scale(1.05); filter: drop-shadow(0 0 6px currentColor); }
+
+/* Education Layout Fix */
+.education-wrapper { border-left: 2px solid var(--glass-border); padding-left: 20px; margin-left: 8px; }
+.education-node { position: relative; }
+.education-node::before {
+  content: ''; position: absolute; left: -27px; top: 5px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--bg-dark); border: 2.5px solid var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan);
+}
+.education-node h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.education-node .date { color: var(--primary-blue); font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; display: inline-block; }
+.education-node p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* Contact Alignment & App Logos Fix */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; }
+.contact-info { display: flex; flex-direction: column; gap: 14px; }
+.contact-card { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 16px; border-radius: 12px; transition: var(--transition); }
+.contact-card:hover { background: rgba(37, 99, 235, 0.04); border-color: rgba(37, 99, 235, 0.2); transform: translateX(4px); }
+.contact-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+
+/* Specific Brand Colors for Logos */
+.contact-card.instagram .contact-icon { background: rgba(225, 48, 108, 0.15); color: #E1306C; }
+.contact-card.discord .contact-icon { background: rgba(114, 137, 218, 0.15); color: #7289DA; }
+.contact-card.email .contact-icon { background: rgba(234, 67, 53, 0.15); color: #EA4335; }
+
+.contact-card h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 1px; }
+.contact-card p a { color: var(--text-muted); font-size: 0.85rem; }
+.contact-card:hover p a { color: #fff; }
+
+/* Clean Contact Form */
+.contact-form { padding: 24px; border-radius: 16px; }
+.form-group { margin-bottom: 16px; }
+input.form-control, textarea.form-control {
+  width: 100%; padding: 12px 14px; border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(3, 7, 18, 0.6);
+  color: var(--text-main); font-size: 0.9rem; transition: var(--transition);
+}
+input.form-control:focus, textarea.form-control:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 12px rgba(37, 99, 235, 0.25); }
+textarea.form-control { height: 110px; resize: none; }
+
+/* Footer */
+footer { padding: 30px 0; text-align: center; color: var(--text-muted); border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px; font-size: 0.85rem; }
+
+/* Fluid Interactive Background Particles */
+.fluid-particle {
+  position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+  filter: blur(40px); transform: translate3d(0,0,0); will-change: transform;
+}
+
+/* Responsiveness Architecture */
+@media(max-width: 992px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(3, 7, 18, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border); flex-direction: column; padding: 24px; gap: 16px;
+  }
+  .nav-links.active { display: flex; }
+  .hamburger { display: block; }
+  .hero h1 { font-size: 2.2rem; }
+}
+@media(max-width: 600px) {
+  .hero h1 { font-size: 1.9rem; }
+  .profile-container { width: 150px; height: 150px; }
+  .skills-list { grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); }
+}
 </style>
 </head>
 <body>
+
 <header>
   <div class="container navbar">
-    <div class="logo">
-      <div class="title">
-        <div class="main">Abdo | Open Source Community</div>
-      </div>
-    </div>
-    <div class="header-right">
+    <div class="logo">Abdo Portfolio</div>
+    <div class="nav-wrapper">
       <nav class="nav-links">
-        <a href="#home">Home</a>
+        <a href="#home" class="active">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
@@ -96,96 +217,113 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:1px solid 
   </div>
 </header>
 
-<section class="hero" id="home">
+<section class="hero" id="home" style="opacity: 1; transform: translateY(0);">
   <div class="container hero-inner">
     <div class="profile-container">
       <div class="profile-halo"></div>
-      <img class="profile-img" src="https://i.postimg.cc/xTggJQX3/IMG-2.jpg" alt="Abderrahmane Ghedir" style="object-position:top">
+      <!-- Your premium correct updated picture -->
+      <img class="profile-img" src="https://i.postimg.cc/qvpYWh5M/image-2.png" alt="Abderrahmane Ghedir">
     </div>
     <h1>Hello! I'm Abderrahmane Ghedir</h1>
-    <p>Full Stack Developer & Manager of Developer Team in Open Source Community Algeria</p>
-    <a class="btn" href="#contact">Get In Touch</a>
+    <p>I’m a Full-Stack Developer and a 3rd-year Computer Science Engineering student specializing in building fast, secure, and user-centric web applications.</p>
+    <a class="btn" href="#contact"><i class="fa-regular fa-paper-plane"></i> Get In Touch</a>
   </div>
 </section>
 
 <section id="about">
   <div class="container">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <p>Hello! I'm Abderrahmane Ghedir, a second-year Computer Science Engineering student at University of Batna 2 Mustapha Ben Boulaid in Algeria.</p>
-      <p>I'm passionate about web development, open-source collaboration, and cybersecurity. I enjoy building interactive UIs, managing developer teams, and learning new technologies.</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid glass-card">
+      <div class="about-text">
+        <p>As a 3rd-year Computer Science Engineering student, I bridge systemic logic with scalable software development. My educational path fuels my skill in managing complex data frameworks and understanding algorithm optimization deeply.</p>
+      </div>
+      <div class="about-text">
+        <p>My journey into Full-Stack development focuses on constructing clean backend structures paired with highly responsive interfaces. I focus on developing clean architectures, smooth micro-interactions, and professional engineering workflows.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="container">
-    <h2>Skills & Languages</h2>
-    <div class="skills-container">
-      <div class="skill-category">
-        <h3>Technical Skills</h3>
+    <h2 class="section-title">Skills & Technologies</h2>
+    <div class="skills-grid">
+      
+      <!-- Frontend Architecture Group -->
+      <div class="skills-category glass-card">
+        <h3><i class="fa-solid fa-laptop-code"></i> Frontend Stack</h3>
         <div class="skills-list">
-          <span class="skill-item"><i class="fab fa-html5" style="color:#E44D26"></i> HTML</span>
-          <span class="skill-item"><i class="fab fa-css3-alt" style="color:#1572B6"></i> CSS</span>
-          <span class="skill-item"><i class="fab fa-js" style="color:#F7DF1E"></i> JavaScript</span>
-          <span class="skill-item"><i class="fas fa-c" style="color:#A8B9CC"></i> C Programming</span>
-          <span class="skill-item"><i class="fab fa-php" style="color:#8892BE"></i> PHP</span>
-          <span class="skill-item"><i class="fab fa-java" style="color:#007396"></i> Java</span>
-          <span class="skill-item"><i class="fab fa-git-alt" style="color:#F05032"></i> Git</span>
-          <span class="skill-item"><i class="fab fa-github" style="color:#181717"></i> GitHub</span>
+          <div class="skill-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+          <div class="skill-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+          <div class="skill-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+          <div class="skill-item"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+          <div class="skill-item"><i class="devicon-react-original colored"></i><span>React</span></div>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Languages</h3>
+
+      <!-- Backend Infrastructure Group -->
+      <div class="skills-category glass-card">
+        <h3><i class="fa-solid fa-server"></i> Backend & DB</h3>
         <div class="skills-list">
-          <span class="skill-item"><i class="fas fa-language" style="color:#FFD700"></i> Arabic</span>
-          <span class="skill-item"><i class="fas fa-language" style="color:#1E90FF"></i> French</span>
-          <span class="skill-item"><i class="fas fa-language" style="color:#32CD32"></i> English</span>
+          <div class="skill-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+          <div class="skill-item"><i class="devicon-express-original" style="color: #cbd5e1;"></i><span>Express</span></div>
+          <div class="skill-item"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+          <div class="skill-item"><i class="devicon-c-plain colored"></i><span>C Language</span></div>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Interests</h3>
+
+      <!-- Professional Workflow Engineering Tools (VS Code Original Icon) -->
+      <div class="skills-category glass-card">
+        <h3><i class="fa-solid fa-toolbox"></i> Engineering Tools</h3>
         <div class="skills-list">
-          <span class="skill-item"><i class="fas fa-code" style="color:#F08080"></i> Open Source</span>
-          <span class="skill-item"><i class="fas fa-pencil-ruler" style="color:#FFD700"></i> UI/UX</span>
-          <span class="skill-item"><i class="fas fa-shield-alt" style="color:#00FF00"></i> Cybersecurity</span>
+          <div class="skill-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+          <div class="skill-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+          <div class="skill-item"><i class="devicon-github-original" style="color: #f1f5f9;"></i><span>GitHub</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <section id="education">
   <div class="container">
-    <h2>Education</h2>
-    <div class="education-item">
-      <h3>University of Batna 2</h3>
-      <p>2026 - Present</p>
-      <p>Studying Computer Science Engineering (Second year).</p>
+    <h2 class="section-title">Education</h2>
+    <div class="glass-card">
+      <div class="education-wrapper">
+        <div class="education-node">
+          <h3>Computer Science Engineering Degree</h3>
+          <span class="date">Third-Year Student (Undergraduate)</span>
+          <p>Immersed in advanced algorithm structures, object-oriented concepts, and enterprise-grade system patterns to build high-performance computation foundations.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="container">
-    <h2>Contact</h2>
-    <div class="contact-container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-item">
+        <!-- Instagram Card with App Icon -->
+        <div class="contact-card instagram">
           <div class="contact-icon"><i class="fab fa-instagram"></i></div>
           <div>
             <h4>Instagram</h4>
             <p><a href="https://www.instagram.com/abdo_ghd?igsh=aDF6eWc0MWlmdGU2" target="_blank">@abdo_ghd</a></p>
           </div>
         </div>
-        <div class="contact-item">
+        <!-- Discord Card with App Icon -->
+        <div class="contact-card discord">
           <div class="contact-icon"><i class="fab fa-discord"></i></div>
           <div>
             <h4>Discord</h4>
-            <p><a href="https://discord.gg/5KCVKV2R" target="_blank">Join Discord</a></p>
+            <p><a href="https://discord.gg/5KCVKV2R" target="_blank">Join Server</a></p>
           </div>
         </div>
-        <div class="contact-item">
+        <!-- Email Card with App Icon -->
+        <div class="contact-card email">
           <div class="contact-icon"><i class="fas fa-envelope"></i></div>
           <div>
             <h4>Email</h4>
@@ -193,13 +331,20 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:1px solid 
           </div>
         </div>
       </div>
-      <div class="contact-form">
+      
+      <div class="contact-form glass-card">
         <form id="contactForm">
-          <input type="text" name="name" class="form-control" placeholder="Your name" required>
-          <input type="email" name="email" class="form-control" placeholder="Your email" required>
-          <textarea name="message" class="form-control" placeholder="Your message" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
-          <div id="formStatus" style="margin-top:12px"></div>
+          <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Your email" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" class="form-control" placeholder="Your message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message <i class="fa-solid fa-arrow-right-long"></i></button>
+          <div id="formStatus" style="margin-top: 12px; font-weight: 600; color: var(--neon-cyan); font-size: 0.9rem;"></div>
         </form>
       </div>
     </div>
@@ -208,78 +353,114 @@ footer{padding:26px 0;text-align:center;color:var(--muted);border-top:1px solid 
 
 <footer>
   <div class="container">
-    <p>© Abdo | Open Source Community. All rights reserved.</p>
+    <p>© Abdo Portfolio. All rights reserved.</p>
   </div>
 </footer>
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-(function(){emailjs.init("nFO9bNLAdaYKqYVVz");})();
-const hamburger=document.querySelector('.hamburger');
-const navLinks=document.querySelector('.nav-links');
-if(hamburger){hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'))}
-const sections=document.querySelectorAll('section');
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});},{threshold:0.18});
-sections.forEach(s=>io.observe(s));
-const form=document.getElementById('contactForm');
-form.addEventListener('submit',function(e){e.preventDefault();emailjs.sendForm('service_ehfh9er','template_rkwpr6c',this).then(function(){document.getElementById('formStatus').innerText='Message sent successfully!';form.reset();},function(err){document.getElementById('formStatus').innerText='Failed to send message.';console.error(err)});});
+(function(){ emailjs.init("nFO9bNLAdaYKqYVVz"); })();
 
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => { if(e.keyCode===123 || (e.ctrlKey && ['u','s','c','i'].includes(e.key))) e.preventDefault(); });
-
-function makeBubblesForSection(sec, count){
-  const container=document.createElement('div');
-  container.className='floating-elements';
-  for(let i=0;i<count;i++){
-    const el=document.createElement('div');
-    el.className='floating-element';
-    const size = Math.round(Math.random()*36)+12;
-    el.style.width = size+'px';
-    el.style.height = size+'px';
-    el.style.left = (Math.random()*100).toFixed(2)+'%';
-    el.style.bottom = (-Math.random()*120).toFixed(0)+'px';
-    el.style.opacity = (0.18 + Math.random()*0.5).toFixed(2);
-    el.style.animationDuration = (12 + Math.random()*16).toFixed(2)+'s';
-    el.style.animationDelay = (Math.random()*6).toFixed(2)+'s';
-    el.dataset.speed = (0.03 + Math.random()*0.12).toFixed(3);
-    container.appendChild(el);
-  }
-  sec.appendChild(container);
-  return container;
+// Hamburger Navigation Trigger
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+if(hamburger){
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+  });
 }
 
-const bubbleContainers = [];
-sections.forEach(sec=>{
-  const cnt = makeBubblesForSection(sec, 8);
-  bubbleContainers.push(cnt);
-});
+// Highly Accurate Scroll Animation Trigger
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
 
-let lastMouseX = window.innerWidth/2;
-let lastMouseY = window.innerHeight/2;
-window.addEventListener('mousemove', (e)=>{
-  lastMouseX = e.clientX;
-  lastMouseY = e.clientY;
-});
-
-function animateBubbles(){
-  bubbleContainers.forEach(container=>{
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.left + rect.width/2;
-    const centerY = rect.top + rect.height/2;
-    const dx = (lastMouseX - centerX) / window.innerWidth;
-    const dy = (lastMouseY - centerY) / window.innerHeight;
-    const els = container.children;
-    for(let i=0;i<els.length;i++){
-      const el = els[i];
-      const speed = parseFloat(el.dataset.speed || 0.06);
-      const tx = dx * (i%3+1) * 18 * speed;
-      const ty = dy * (i%2+1) * 12 * speed;
-      el.style.transform = `translate3d(${tx}px,0,0)`;
+const options = { threshold: 0.2, rootMargin: "0px 0px -15% 0px" };
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      const id = e.target.getAttribute('id');
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if(item.getAttribute('href') === `#${id}`) item.classList.add('active');
+      });
     }
   });
-  requestAnimationFrame(animateBubbles);
+}, options);
+sections.forEach(s => io.observe(s));
+
+// AJAX Contact Delivery Pipeline
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const statusDiv = document.getElementById('formStatus');
+  statusDiv.innerText = 'Sending message...';
+  emailjs.sendForm('service_ehfh9er','template_rkwpr6c',this).then(function(){
+    statusDiv.innerText = '✓ Message sent successfully!';
+    form.reset();
+  }, function(err){
+    statusDiv.innerText = '✕ Failed to deliver message.';
+    console.error(err);
+  });
+});
+
+// Premium Mouse Inertia Blur Orbs Layering
+function initDynamicGlowOrbs(sec, amount) {
+  const wrapper = document.createElement('div');
+  wrapper.style.position = 'absolute';
+  wrapper.style.top = '0'; wrapper.style.left = '0';
+  wrapper.style.width = '100%'; wrapper.style.height = '100%';
+  wrapper.style.overflow = 'hidden'; wrapper.style.pointerEvents = 'none';
+  wrapper.style.zIndex = '0';
+
+  for(let i=0; i < amount; i++){
+    const particle = document.createElement('div');
+    particle.className = 'fluid-particle';
+    const size = Math.floor(Math.random() * 160) + 120;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${(Math.random() * 100).toFixed(1)}%`;
+    particle.style.top = `${(Math.random() * 100).toFixed(1)}%`;
+    particle.dataset.inertia = (0.01 + Math.random() * 0.02).toFixed(3);
+    wrapper.appendChild(particle);
+  }
+  sec.appendChild(wrapper);
+  return wrapper;
 }
-requestAnimationFrame(animateBubbles);
+
+const particleLayers = [];
+sections.forEach(sec => {
+  particleLayers.push(initDynamicGlowOrbs(sec, 2));
+});
+
+let targetMouseX = window.innerWidth / 2;
+let targetMouseY = window.innerHeight / 2;
+window.addEventListener('mousemove', (e) => {
+  targetMouseX = e.clientX;
+  targetMouseY = e.clientY;
+});
+
+function renderFluidOrbs() {
+  particleLayers.forEach(layer => {
+    const box = layer.getBoundingClientRect();
+    if (box.top < window.innerHeight && box.bottom > 0) {
+      const midX = box.left + box.width / 2;
+      const midY = box.top + box.height / 2;
+      const offsetX = (targetMouseX - midX) * 0.1;
+      const offsetY = (targetMouseY - midY) * 0.1;
+      
+      Array.from(layer.children).forEach((orb, i) => {
+        const factor = parseFloat(orb.dataset.inertia || 0.015);
+        const tx = offsetX * (i + 1) * factor;
+        const ty = offsetY * (i + 1) * factor;
+        orb.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      });
+    }
+  });
+  requestAnimationFrame(renderFluidOrbs);
+}
+requestAnimationFrame(renderFluidOrbs);
 </script>
 </body>
 </html>
