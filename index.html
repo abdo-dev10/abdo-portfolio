@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Abdo Portfolio</title>
+  <title>Abderrahmane Ghedir | Portfolio</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -412,6 +412,7 @@
     .reveal.active .skills-grid > *:nth-child(1) { transition-delay: 0.15s; }
     .reveal.active .skills-grid > *:nth-child(2) { transition-delay: 0.3s; }
     .reveal.active .skills-grid > *:nth-child(3) { transition-delay: 0.45s; }
+    .reveal.active .skills-grid > *:nth-child(4) { transition-delay: 0.6s; }
 
     .reveal.active .contact-info > *:nth-child(1) { transition-delay: 0.15s; }
     .reveal.active .contact-info > *:nth-child(2) { transition-delay: 0.3s; }
@@ -428,19 +429,15 @@
       box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1); 
     }
 
-    .about-grid { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 30px; 
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     .about-text p { 
       color: var(--text-muted); 
-      font-size: 1rem; 
-      margin-bottom: 16px; 
-      line-height: 1.7; 
-    }
-    .about-text p:last-child { 
-      margin-bottom: 0; 
+      font-size: 1.05rem; 
+      line-height: 1.8; 
     }
 
     .skills-grid { 
@@ -522,21 +519,28 @@
       border-radius: 50%; background: var(--bg-dark); border: 2.5px solid var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan);
     }
     .education-node h3 { 
-      font-size: 1.2rem; 
+      font-size: 1.25rem; 
       font-weight: 700; 
       color: #fff; 
       margin-bottom: 2px; 
     }
-    .education-node .date { 
+    .education-node .specialization {
+      color: var(--neon-cyan);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .education-node .institution { 
       color: var(--primary-blue); 
       font-weight: 600; 
-      font-size: 0.85rem; 
-      margin-bottom: 8px; 
-      display: inline-block; 
+      font-size: 0.9rem; 
+      margin-bottom: 12px; 
+      display: block; 
     }
     .education-node p { 
       color: var(--text-muted); 
       font-size: 0.95rem; 
+      line-height: 1.7;
     }
 
     .contact-grid { 
@@ -624,7 +628,7 @@
     }
 
     @media(max-width: 992px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 24px; }
       .nav-links {
         display: none; position: absolute; top: 100%; left: 0; right: 0;
         background: rgba(3, 7, 18, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -690,7 +694,7 @@
         <img class="profile-img" src="https://uploads.onecompiler.io/434b9smgd/1783420751307/IMG_1441.jpeg" alt="Abderrahmane Ghedir">
       </div>
       <h1 class="hero-animate-item">Hello! I'm Abderrahmane Ghedir</h1>
-      <p class="hero-animate-item">I’m a Full-Stack Developer and a 3rd-year Computer Science Engineering student specializing in building fast, secure, and user-centric web applications.</p>
+      <p class="hero-animate-item">Third-Year Computer Engineering Student specializing in Cybersecurity, passionate about building secure, modern, and user-friendly web applications.</p>
       <div class="hero-animate-item">
         <a class="btn" href="#contact"><i class="fa-regular fa-paper-plane"></i> Get In Touch</a>
       </div>
@@ -707,22 +711,27 @@
   <section id="about" class="reveal">
     <div class="container">
       <h2 class="section-title">About Me</h2>
-      <div class="about-grid glass-card">
+      <div class="glass-card about-container">
         <div class="about-text">
-          <p>As a 3rd-year Computer Science Engineering student, I bridge systemic logic with scalable software development. My educational path fuels my skill in managing complex data frameworks and understanding algorithm optimization deeply.</p>
+          <p>I'm <strong>Abderrahmane Ghedir</strong>, a third-year Computer Engineering student specializing in Cybersecurity. I'm passionate about designing and developing modern web applications that combine security, performance, and an excellent user experience.</p>
         </div>
         <div class="about-text">
-          <p>My journey into Full-Stack development focuses on constructing clean backend structures paired with highly responsive interfaces. I focus on developing clean architectures, smooth micro-interactions, and professional engineering workflows.</p>
+          <p>My interests extend beyond writing code. I enjoy transforming ideas into real-world solutions by creating clean interfaces, organizing scalable projects, and implementing secure development practices. I believe that every successful application should be intuitive, efficient, and built with security in mind from the very beginning.</p>
+        </div>
+        <div class="about-text">
+          <p>I'm continuously learning new technologies, improving my development skills, and exploring the latest trends in web development and cybersecurity. My goal is to create reliable digital experiences that are both functional and visually appealing while continuously growing as a software engineer.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Section Skills (تم تعديل الترتيب وإضافة Linux و Docker) -->
   <section id="skills" class="reveal">
     <div class="container">
       <h2 class="section-title">Skills & Technologies</h2>
       <div class="skills-grid">
         
+        <!-- 1. Frontend Stack -->
         <div class="skills-category glass-card">
           <h3><i class="fa-solid fa-laptop-code"></i> Frontend Stack</h3>
           <div class="skills-list">
@@ -734,6 +743,7 @@
           </div>
         </div>
 
+        <!-- 2. Backend & DB -->
         <div class="skills-category glass-card">
           <h3><i class="fa-solid fa-server"></i> Backend & DB</h3>
           <div class="skills-list">
@@ -746,12 +756,26 @@
           </div>
         </div>
 
+        <!-- 3. Security and Networking -->
+        <div class="skills-category glass-card">
+          <h3><i class="fa-solid fa-shield-halved"></i> Security & Networking</h3>
+          <div class="skills-list">
+            <div class="skill-item"><i class="devicon-ubuntu-plain colored"></i><span>Ubuntu</span></div>
+            <div class="skill-item"><i class="fa-solid fa-network-wired" style="color: #00f2ff;"></i><span>Cisco Packet Tracer</span></div>
+            <div class="skill-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+            <div class="skill-item"><i class="devicon-bash-plain colored"></i><span>Bash</span></div>
+          </div>
+        </div>
+
+        <!-- 4. Engineering Tools (تم إضافة Linux و Docker) -->
         <div class="skills-category glass-card">
           <h3><i class="fa-solid fa-toolbox"></i> Engineering Tools</h3>
           <div class="skills-list">
             <div class="skill-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
             <div class="skill-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
             <div class="skill-item"><i class="devicon-github-original" style="color: #f1f5f9;"></i><span>GitHub</span></div>
+            <div class="skill-item"><i class="devicon-linux-plain colored"></i><span>Linux</span></div>
+            <div class="skill-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
           </div>
         </div>
 
@@ -765,9 +789,10 @@
       <div class="glass-card">
         <div class="education-wrapper">
           <div class="education-node">
-            <h3>Computer Science Engineering Degree</h3>
-            <span class="date">Third-Year Student (Undergraduate)</span>
-            <p>Immersed in advanced algorithm structures, object-oriented concepts, and enterprise-grade system patterns to build high-performance computation foundations.</p>
+            <h3>Bachelor's Degree in Computer Engineering (3rd Year)</h3>
+            <div class="specialization">Specialization: Cybersecurity</div>
+            <span class="institution">Mustapha Ben Boulaid University of Batna 2 — Batna, Algeria</span>
+            <p>Currently pursuing a Computer Engineering degree with a specialization in Cybersecurity, focusing on secure software development, networking, operating systems, and modern web technologies.</p>
           </div>
         </div>
       </div>
